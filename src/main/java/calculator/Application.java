@@ -21,9 +21,20 @@ public class Application {
     }
     
     public static int calculator(String input) {
-    	if (input == null|| input.isEmpty()) { return 0; }
+    	if (input == null|| input.isEmpty()) { 
+    		return 0; 
+    	}
     	
+    	String delimiter = ",|:";
+    	String numbers = input;
     	
+    	if (input.startsWith("//")) {
+    		int index = input.indexOf("\n");
+    		delimiter = input.substring(2, index);
+    		numbers = input.substring(index + 1);
+    	}
+    	
+     	
     	return 0;
     }
 }
