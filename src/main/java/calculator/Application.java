@@ -44,8 +44,9 @@ public class Application {
     		if (num < 0) {
     			throw new IllegalArgumentException();
     		}
+    		sum += num;
     	}
      	
-    	return 0;
+    	return sum;
     }
 }
