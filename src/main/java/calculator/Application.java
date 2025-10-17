@@ -34,6 +34,17 @@ public class Application {
     		numbers = input.substring(index + 1);
     	}
     	
+    	String[] partitions = numbers.split(delimiter);
+    	
+    	int sum = 0;
+    	for (String part : partitions) {
+    		if(part.isEmpty()) continue;
+    			int num = Integer.parseInt(part);
+    			
+    		if (num < 0) {
+    			throw new IllegalArgumentException();
+    		}
+    	}
      	
     	return 0;
     }
