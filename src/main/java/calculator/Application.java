@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Application {
     public static void main(String[] args) {
@@ -27,17 +28,24 @@ public class Application {
     	if (input == null|| input.isEmpty()) { 
     		return 0; 
     	}
-    	
     	String delimiter = ",|:";
     	String numbers = input;
     	
     	if (input.startsWith("//")) {
-    		int index = input.indexOf("\n");
-    		if (index == -1) {
+    		int index = input.indexOf("\\n");
+    		int offset = 2;
+            if (index == -1) {
+                index = input.indexOf("\n");
+                offset = 1;
+            }
+            if (index == -1) {
                 throw new IllegalArgumentException("커스텀 구분자 형식이 잘못되었습니다.");
             }
-    		delimiter = input.substring(2, index);
-    		numbers = input.substring(index + 1);
+            
+            String customDelim = input.substring(2, index);
+            delimiter = Pattern.quote(customDelim);
+            numbers = input.substring(index + offset);
+
     	}
     	
     	String[] partitions = numbers.split(delimiter);
